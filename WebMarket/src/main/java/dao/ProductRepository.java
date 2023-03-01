@@ -15,7 +15,7 @@ public class ProductRepository {
 		phone.setUnitsInstock(1000);
 		phone.setCondition("New");
 
-		Product notebook = new Product("P1235", "LG PC그램", 1500000);
+		Product notebook = new Product("P1235", "LG PC Gram", 1500000);
 		notebook.setDescription("13.3inch, IPS LED Dispaly, 5rd Generation Intel Core processors");
 		notebook.setCategory("Notebook");
 		notebook.setManufacturer("LG");
@@ -34,7 +34,21 @@ public class ProductRepository {
 		listOfProducts.add(tablet);
 
 	}
+
 	public ArrayList<Product> getAllProducts() {
 		return listOfProducts;
+	}
+	//상품 상세 정보를 가져오는 메소드
+	public Product getProductByid(String productId) {
+		Product productById = null;
+		
+		for(int i=0;i<listOfProducts.size();i++) {
+			Product product = listOfProducts.get(i);
+			if(product !=null && product.getProductId() !=null && product.getProductId().equals(productId)) {
+				productById = product;
+				break;
+			}
+		}
+		return productById;
 	}
 }
