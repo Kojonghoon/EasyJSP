@@ -1,38 +1,91 @@
-<%@page contentType="text/html; charset=utf-8"%>
-<%@page import="dto.Product"%>
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session" />
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="dto.Product"%>
+<%@ page import="dao.ProductRepository"%>
+<jsp:useBean id="productDAO" class="dao.ProductRepository"
+	scope="session" />
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 상세 정보</title>
+<style>
+.content .row {
+	padding: 30px 0;
+	display: flex;
+}
+
+.content .row div {
+	padding: 10px;
+}
+
+.content h3, .content p, .content h4 {
+	margin: 25px 0;
+}
+
+.content h3 {
+	margin-bottom: 5px;
+}
+
+.content .description {
+	margin-top: 5px;
+}
+
+.content .badge {
+	background-color: #f00;
+	color: #fff;
+	border-radius: 5px;
+}
+</style>
 </head>
 <body>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">상품 정보</h1>
-		</div>
-	</div>
-	<%
-		String id = request.getParameter("id");
-		Product product = productDAO.getProductByid(id);
-	%>
-	<div class="container">
-		<div class = "row">
-			<div class = "col-md-6">
-			<h3><%=product.getPname() %></h3>
-			<p><%=product.getDescription() %>
-			<p><b>상품 코드 : </b><span class="badge badge-danger"><%=product.getProductId() %></span>
-			<p><b>제조사</b> : <%=product.getManufacturer() %>
-			<p><b>분류</b> : <%=product.getCategory()%>
-			<p><b>재고 수</b> : <%=product.getUnitsInstock() %>
-			<h4><%=product.getUnitPrice() %>원</h4>
-			<p><a href="#" class="btn_btn-info">상품정보 &raquo;</a>
-			<a href="./products.jsp" class="btn btn_secondary">상품 목록 &raquo;</a>
+	<jsp:include page="header.jsp" />
+	<div class="main">
+		<div class="banner">
+			<div class="container">
+				<h1>상품 정보</h1>
 			</div>
 		</div>
-		<hr>
+
+		<%
+		String id = request.getParameter("id");
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
+		%>
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div>
+						<img alt="상품 사진" style="width: 100%"
+							src="c:/upload/<%=product.getFilename()%>">
+					</div>
+					<div>
+						<h3><%=product.getPname()%></h3>
+						<p class="description"><%=product.getDescription()%></p>
+						<p>
+							<b>상품 코드 : </b><span class="badge"><%=product.getProductId()%></span>
+						<p>
+							<b>제조사</b> :
+							<%=product.getManufacturer()%></p>
+						<p>
+							<b>분류</b> :
+							<%=product.getCategory()%></p>
+						<p>
+							<b>재고 수</b> :
+							<%=product.getUnitInStock()%>
+						</p>
+						<h4><%=product.getUnitPrice()%>원
+						</h4>
+						<p>
+							<a href="#" class="btn btn-secondary">상품 주문 &raquo;</a> <a
+								href="./products.jsp" class="btn">상품 목록 &raquo;</a>
+						</p>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

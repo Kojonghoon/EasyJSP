@@ -4,94 +4,105 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
-	private static final long serialVersionUID = -4274700572038677000L;
+  private static final long serialVersionUID = 1L;
 
+  private String productId; // 상품아이디
+  private String pname; // 상품명
+  private Integer unitPrice; // 상품가격
+  private String description; // 상품설명
+  private String manufacturer; // 제조사
+  private String category; // 분류
+  private long unitInStock; // 재고수
+  private String condition; // 신상품 or 중고품 or 재생품
+  private String filename; // 이미지 파일명
 
-	private String productId; 	// 상품 아이디
-	private String pname; 		// 상품명
-	private Integer unitPrice; 	//상품 가격
-	private String description;	//상품 설명
-	private String manufacturer;//제조사
-	private String category;	//분류
-	private long unitsInstock;	//재고수
-	private String condition;	//신상품, 중고품, 재생품
-	
-	public Product() {
-		super();
-	}
-	
-	public Product(String productId, String pname, Integer unitPrice) {
-		super();
-		this.productId = productId;
-		this.pname = pname;
-		this.unitPrice = unitPrice;
-	}
+  public Product() {
+    super();
+  }
 
-	public String getProductId() {
-		return productId;
-	}
+  public Product(String productId, String pname, Integer unitPrice) {
+    this.productId = productId;
+    this.pname = pname;
+    this.unitPrice = unitPrice;
+  }
 
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
+  public String getProductId() {
+    return productId;
+  }
 
-	public String getPname() {
-		return pname;
-	}
+  public void setProductId(String productId) {
+    this.productId = productId;
+  }
 
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
+  public String getPname() {
+    return pname;
+  }
 
-	public Integer getUnitPrice() {
-		return unitPrice;
-	}
+  public void setPname(String pname) {
+    this.pname = pname;
+  }
 
-	public void setUnitPrice(Integer unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+  public Integer getUnitPrice() {
+    return unitPrice;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setUnitPrice(Integer unitPrice) {
+    this.unitPrice = unitPrice;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public String getManufacturer() {
-		return manufacturer;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
+  public String getManufacturer() {
+    return manufacturer;
+  }
 
-	public String getCategory() {
-		return category;
-	}
+  public void setManufacturer(String manufacturer) {
+    this.manufacturer = manufacturer;
+  }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+  public String getCategory() {
+    return category;
+  }
 
-	public long getUnitsInstock() {
-		return unitsInstock;
-	}
+  public void setCategory(String category) {
+    this.category = category;
+  }
 
-	public void setUnitsInstock(long unitsInstock) {
-		this.unitsInstock = unitsInstock;
-	}
+  public long getUnitInStock() {
+    return unitInStock;
+  }
 
-	public String getCondition() {
-		return condition;
-	}
+  public void setUnitInStock(long unitInStock) {
+    this.unitInStock = unitInStock;
+  }
 
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
+  public String getCondition() {
+    return condition;
+  }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+  public void setCondition(String condition) {
+    this.condition = condition;
+  }
+
+  public static long getSerialcersionuid() {
+    return serialVersionUID;
+  }
+
+  public String getFilename() {
+    return filename;
+  }
+
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
 }
